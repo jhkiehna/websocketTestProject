@@ -1803,9 +1803,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Input Component mounted.');
+  },
+  methods: {
+    sendCommand: function sendCommand() {
+      console.log("Command Sent");
+      Echo.channel('chat').notification('typing', {
+        command: "Sent Command"
+      });
+    }
   }
 });
 
@@ -47049,27 +47058,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "form-check" }, [
+    _c(
+      "label",
+      { staticClass: "form-check-input", attrs: { for: "textInput" } },
+      [_vm._v("$")]
+    ),
+    _vm._v(" "),
+    _c("textarea", {
+      staticClass: "form-control input",
+      attrs: { rows: "1", id: "textInput", name: "textInput" }
+    }),
+    _vm._v(" "),
+    _c("button", { on: { click: _vm.sendCommand } }, [_vm._v("Submit")])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check" }, [
-      _c(
-        "label",
-        { staticClass: "form-check-input", attrs: { for: "textInput" } },
-        [_vm._v("$")]
-      ),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control input",
-        attrs: { rows: "1", id: "textInput", name: "textInput" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59254,7 +59258,10 @@ var app = new Vue({
 Echo.channel('testChannel').listen('.testEvent', function (e) {
   console.log("event received");
   console.log(e.name);
-});
+}); // Echo.private(`App.User.${userId}`)
+//     .notification((notification) => {
+//         console.log(notification.type);
+//     });
 
 /***/ }),
 

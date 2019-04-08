@@ -45,3 +45,8 @@ Echo.channel('testChannel').listen('.testEvent', function (e) {
     console.log("event received");
     console.log(e.name);
 });
+
+// Echo.private(`App.User.${userId}`)
+//     .notification((notification) => {
+//         console.log(notification.type);
+//     });
