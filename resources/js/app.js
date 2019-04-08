@@ -22,6 +22,11 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component(
+    'input-component',
+    require('./components/InputComponent.vue').default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -30,4 +35,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app'
+});
+
+// Echo.private(`App.User.${userId}`).notification((notification) => {
+//     console.log(notification);
+// });
+
+Echo.channel('testChannel').listen('.testEvent', function (e) {
+    console.log("event received");
+    console.log(e.name);
 });
